@@ -36,11 +36,11 @@ exports.fetchAllFeeds = function (req, res) {
         })
 
         let uniqueFeeds = Object.values(dict);
-        let sortedFeeds = uniqueFeeds.sort((a, b) => new Date(a.pubDate[0]) - new Date(b.pubDate[0]))
+        let sortedFeeds = uniqueFeeds.sort((a, b) => new Date(b.pubDate[0]) - new Date(a.pubDate[0]))
 
         let responseArray = [];
         sortedFeeds.slice(0,10).forEach(val => {
-             responseArray.push({title: val.title[0], link: val.link[0]})
+            responseArray.push({title: val.title[0], link: val.link[0]})
         })
 
         res.json(responseArray);
